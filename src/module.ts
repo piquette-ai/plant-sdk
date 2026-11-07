@@ -53,7 +53,7 @@ export abstract class PlantModule<Env = unknown> extends WorkerEntrypoint<Env> {
   /**
    * Deliver an event to the module's onEvent and to every agent that listens
    * for it. `agentScopes` are core-minted agent scopes, one per listening
-   * agent (see plant-agents' `withAgentEventScopes`): an agent that has one
+   * agent (core mints these when it delivers the event): an agent that has one
    * acts as its agent principal (it can post to the inbox), otherwise it gets
    * the delivery's own context.
    */

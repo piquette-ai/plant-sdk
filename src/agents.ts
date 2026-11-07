@@ -41,7 +41,7 @@ export interface AgentSpec {
    * `"tenant"` reads `schedule` in each tenant's own time zone instead of UTC,
    * e.g. `0 6 * * MON-FRI` is 06:00 on weekdays where the tenant is. Core then
    * fires a quarter-hourly check cron and starts the tick for each tenant whose
-   * local time matches (see plant-agents' scheduler). The minute must be one
+   * local time matches. The minute must be one
    * number, and days of the week must be names (`MON`, `MON-FRI`), so the
    * pattern can't be misread. Default `"utc"`.
    */
