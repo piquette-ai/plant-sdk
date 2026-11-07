@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2023",
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "lib": ["es2023"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["@cloudflare/workers-types", "@cloudflare/vitest-pool-workers"],
+    // Typecheck and tests read the SDK's source at the repo root, so they
+    // don't need a built dist. A module in its own repo drops this and uses
+    // the published package.
+    "paths": { "@piquette/plant-sdk": ["../../src/index.ts"] }
+  },
+  "include": ["src", "test"]
+}

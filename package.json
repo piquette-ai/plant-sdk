@@ -1,0 +1,65 @@
+{
+  "name": "@piquette/plant-sdk",
+  "version": "0.1.0",
+  "description": "Public module SDK for piquette plants: PlantContext, ModuleManifest, defineModule, PlantModule, the privacy contract and MCP extensions.",
+  "license": "MIT",
+  "author": "iamfiscus LLC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piquette-ai/plant-sdk.git"
+  },
+  "homepage": "https://github.com/piquette-ai/plant-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/piquette-ai/plant-sdk/issues"
+  },
+  "keywords": [
+    "piquette",
+    "plant",
+    "cloudflare-workers",
+    "microfrontend",
+    "mcp"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "workspaces": [
+    "examples/*"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit && npm run typecheck --workspaces --if-present",
+    "test": "vitest run --typecheck && npm run test --workspaces --if-present",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "check:imports": "node scripts/check-imports.mjs",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "@cloudflare/workers-types": ">=4",
+    "zod": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@cloudflare/workers-types": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261104.1",
+    "@types/node": "22.20.5",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7",
+    "zod": "4.6.7"
+  }
+}

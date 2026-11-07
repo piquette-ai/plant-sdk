@@ -1,0 +1,24 @@
+{
+  "name": "hello-module",
+  "version": "0.1.0",
+  "description": "Example plant module built only on @piquette/plant-sdk, tested through the SDK's mock router over a local service binding.",
+  "license": "MIT",
+  "author": "iamfiscus LLC",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@piquette/plant-sdk": "file:../..",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "0.12.21",
+    "@cloudflare/workers-types": "5.20261104.1",
+    "esbuild": "0.28.2",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}
