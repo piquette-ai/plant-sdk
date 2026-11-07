@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # This package is public (MIT). Fail if the source imports anything
+      # other than relative paths, node:*, cloudflare:*, zod or the SDK itself
+      # (no private @piquette/plant-* packages, nothing outside the package).
+      - name: No private imports (source)
+        run: npm run check:imports
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      # Check again with dist/ present, so the published output is covered too.
+      - name: No private imports (dist)
+        run: npm run check:imports
+      - name: Package contents
+        run: npm pack --dry-run
